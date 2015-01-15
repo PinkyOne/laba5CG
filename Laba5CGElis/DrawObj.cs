@@ -51,17 +51,6 @@ namespace Laba5
         /// <param name="fm1">
         /// The fm 1.
         /// </param>
-        public DrawObj(Form1 fm1)
-        {
-            form1 = fm1;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DrawObj"/> class.
-        /// </summary>
-        /// <param name="fm1">
-        /// The fm 1.
-        /// </param>
         /// <param name="r1">
         /// The r 1.
         /// </param>
@@ -125,13 +114,13 @@ namespace Laba5
         /// <param name="cl">
         /// The cl.
         /// </param>
-        /// <param name="setk">
-        /// The setk.
+        /// <param name="setka">
+        /// The setka.
         /// </param>
-        public void DrawIsometricView(Graphics g, float alpha, float beta, Color cl, int setk)
+        public void DrawIsometricView(Graphics g, float alpha, float beta, Color cl, int setka)
         {
             var m = Matrix3.Axonometric(alpha, beta);
-            var pts = ObjCoordinates(setk);
+            var pts = ObjCoordinates(setka);
             var pta = new PointF[pts.GetLength(0), pts.GetLength(1)];
             for (var i = 0; i < pts.GetLength(0); i++)
             {
@@ -143,17 +132,14 @@ namespace Laba5
             }
 
             var ptf = new PointF[4];
-            Brush brush = new SolidBrush(cl);
-            for (var i = 1; i < pts.GetLength(0); i++)
+            for (var i = 1; i < pta.GetLength(0); i++)
             {
-                for (var j = 1; j < pts.GetLength(1); j++)
+                for (var j = 1; j < pta.GetLength(1); j++)
                 {
                     ptf[0] = pta[i - 1, j - 1];
                     ptf[1] = pta[i, j - 1];
                     ptf[2] = pta[i, j];
                     ptf[3] = pta[i - 1, j];
-
-                    // g.FillPolygon(brush, ptf);
                     g.DrawPolygon(Pens.Black, ptf);
                     g.FillPolygon(new SolidBrush(Color.DeepSkyBlue), ptf);
                 }
