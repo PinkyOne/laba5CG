@@ -96,12 +96,11 @@ namespace Laba5
             if (!isRolling)
             {
                 timer1.Start();
-                float radius = K;
-                var ds = new DrawObj(this, radius, -50, 50, 50);
+                var ds = new DrawObj(this, K, -50, 50, 50);
                 ds.DrawIsometricView(g, i, j, Color.Black, setka);
                 panel1.Invalidate();
-                i += 10;
-                j += 10;
+                //i += 10;
+                //j += 10;
                 isRolling = true;
                 button1.Text = "Stop";
             }
@@ -143,7 +142,7 @@ namespace Laba5
             if (isGtime) i += 1;
             else j += 1;
             Gtime++;
-            if (Gtime % 100 == 0) isGtime = !isGtime;
+            if (Gtime % 180 == 0) isGtime = !isGtime;
         }
         
         /// <summary>
